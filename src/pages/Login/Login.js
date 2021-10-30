@@ -6,20 +6,20 @@ const Login = () => {
 	const history = useHistory();
 	const location = useLocation();
 
-	const redirect_uri = location.state?.from || '/';
+	const redirect_uri = location.state?.from || '/home';
 
 	const { setUser, signInUsingGoogle, setLoading } = useProvider();
 
 	const handleSignIn = () => {
 		signInUsingGoogle()
 			.then((result) => {
-				setLoading(true);
+				// setLoading(true);
 				const newUser = result.user;
-				// setUser(newUser);
+				setUser(newUser);
+				history.push(redirect_uri);
 			})
 			// .catch((error) => {})
 			.finally(() => setLoading(false));
-		history.push(redirect_uri);
 	};
 	return (
 		<div className='my-10 text-center'>

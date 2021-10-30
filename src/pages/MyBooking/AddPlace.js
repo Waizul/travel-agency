@@ -20,7 +20,7 @@ const AddPlace = () => {
 	};
 
 	return (
-		<div className='w-2/3 my-10 mx-auto'>
+		<div className=' my-5 w-64'>
 			<h3 className='text-xl font-semibold text-blue-700 mb-2'>
 				Add New Place
 			</h3>

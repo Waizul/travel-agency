@@ -27,8 +27,8 @@ const useFirebase = () => {
 			})
 			.catch((error) => {
 				// An error happened.
-			})
-			.finally(() => setLoading(true));
+			});
+		// .finally(() => setLoading(true));
 	};
 
 	useEffect(() => {
@@ -36,11 +36,10 @@ const useFirebase = () => {
 			console.log(user);
 			if (user) {
 				setUser(user);
-				setLoading(false);
 			} else {
 				setUser({});
-				setLoading(true);
 			}
+			setLoading(false);
 		});
 	}, []);
 

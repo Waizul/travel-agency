@@ -31,7 +31,7 @@ const Booking = () => {
 	};
 
 	return (
-		<div className='grid grid-cols-12 mt-2'>
+		<div className='grid grid-cols-12 mt-2 mb-5'>
 			<div className='col-span-7 mx-3 text-justify'>
 				<h3 className='text-xl font-semibold text-blue-700 mb-2'>
 					Have a wonderful time in {booking.name}

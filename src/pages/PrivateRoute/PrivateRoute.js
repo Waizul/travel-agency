@@ -7,10 +7,15 @@ const PrivateRoute = ({ children, ...rest }) => {
 	console.log(user);
 
 	if (loading) {
-		<button type='button' class='bg-rose-600' disabled>
-			<svg class='animate-spin h-5 w-5 mr-3' viewBox='0 0 24 24'></svg>
-			Processing
-		</button>;
+		return (
+			<button type='button' className='bg-rose-600' disabled>
+				<svg
+					className='fill-red animate-spin h-5 w-5 mr-3'
+					viewBox='0 0 24 24'
+				></svg>
+				Processing
+			</button>
+		);
 	}
 
 	return (
@@ -18,7 +23,7 @@ const PrivateRoute = ({ children, ...rest }) => {
 			<Route
 				{...rest}
 				render={({ location }) =>
-					user.email ? (
+					user?.email ? (
 						children
 					) : (
 						<Redirect
