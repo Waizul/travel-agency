@@ -12,30 +12,32 @@ import Admin from './pages/Admin/Admin';
 function App() {
 	return (
 		<ProvideAuth>
-			<Router>
-				<Header></Header>
-				<Switch>
-					<Route exact path='/'>
-						<Home></Home>
-					</Route>
-					<Route path='/home'>
-						<Home></Home>
-					</Route>
-					<Route path='/login'>
-						<Login></Login>
-					</Route>
-					<PrivateRoute exact path='/booking/:id'>
-						<Booking></Booking>
-					</PrivateRoute>
-					<PrivateRoute exact path='/myBooking'>
-						<MyBooking></MyBooking>
-					</PrivateRoute>
-					<PrivateRoute exact path='/admin'>
-						<Admin></Admin>
-					</PrivateRoute>
-				</Switch>
-				<Footer></Footer>
-			</Router>
+			<div className=''>
+				<Router>
+					<Header></Header>
+					<Switch>
+						<Route exact path='/'>
+							<Home></Home>
+						</Route>
+						<Route path='/home'>
+							<Home></Home>
+						</Route>
+						<Route path='/login'>
+							<Login></Login>
+						</Route>
+						<PrivateRoute exact path='/booking/:id'>
+							<Booking></Booking>
+						</PrivateRoute>
+						<PrivateRoute exact path='/myBooking'>
+							<MyBooking></MyBooking>
+						</PrivateRoute>
+						<PrivateRoute exact path='/admin'>
+							<Admin></Admin>
+						</PrivateRoute>
+					</Switch>
+					<Footer></Footer>
+				</Router>
+			</div>
 		</ProvideAuth>
 	);
 }

@@ -22,7 +22,7 @@ const MyBooking = () => {
 					Add New Place
 				</button>
 			</div>
-			<div className='col-span-8 mx-auto my-10'>
+			<div className='col-span-8 my-10'>
 				{isTrue ? (
 					<MyBookingInfo></MyBookingInfo>
 				) : (

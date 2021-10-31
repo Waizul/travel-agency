@@ -4,7 +4,7 @@ const usePlace = () => {
 	const [places, setPlaces] = useState([]);
 
 	useEffect(() => {
-		fetch('http://localhost:5000/places')
+		fetch('https://mysterious-fortress-00690.herokuapp.com/places')
 			.then((res) => res.json())
 			.then((data) => {
 				setPlaces(data);

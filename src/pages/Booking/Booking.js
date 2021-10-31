@@ -11,32 +11,36 @@ const Booking = () => {
 	const { user } = useProvider();
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/booking/${id}`)
+		fetch(`https://mysterious-fortress-00690.herokuapp.com/booking/${id}`)
 			.then((res) => res.json())
 			.then((data) => setBooking(data));
-	}, [id]);
+	}, []);
 
-	const {
-		register,
-		handleSubmit,
-		// formState: { errors },
-	} = useForm();
+	const { register, handleSubmit, reset } = useForm();
 
 	const onSubmit = (data) => {
 		data.status = 'pending';
 
 		axios
-			.post('http://localhost:5000/bookingInfos', data)
-			.then((data) => console.log(data));
+			.post(
+				'https://mysterious-fortress-00690.herokuapp.com/bookingInfos',
+				data,
+			)
+			.then((data) => {
+				if (data.data.insertedId) {
+					alert('information received');
+					reset();
+				}
+			});
 	};
 
 	return (
 		<div className='grid grid-cols-12 mt-2 mb-5'>
 			<div className='col-span-7 mx-3 text-justify'>
 				<h3 className='text-xl font-semibold text-blue-700 mb-2'>
-					Have a wonderful time in {booking.name}
+					Have a wonderful time in {booking?.name}
 				</h3>
-				<img src={booking.img} className='w-full h-64' alt='' />
+				<img src={booking?.img} className='w-full h-64' alt='' />
 				<p>{booking?.description}</p>
 			</div>
 			<div className='col-span-5 mt-10 mx-2'>
@@ -63,9 +67,8 @@ const Booking = () => {
 					<input
 						type='name'
 						className='border-2 mb-2'
-						placeholder='to'
-						defaultValue={booking.name}
-						{...register('to')}
+						placeholder={booking?.name}
+						{...register('to', { required: true })}
 					/>
 					<input
 						type='name'

@@ -7,7 +7,7 @@ const Places = () => {
 	const history = useHistory();
 
 	useEffect(() => {
-		fetch('http://localhost:5000/places')
+		fetch('https://mysterious-fortress-00690.herokuapp.com/places')
 			.then((res) => res.json())
 			.then((data) => {
 				setDataFound(true);
@@ -36,25 +36,34 @@ const Places = () => {
 	}
 
 	return (
-		<div>
+		<div className='grid  sm:grid-cols-1 lg:grid-cols-2 gap-5 mx-10 py-5'>
 			{places.map((place) => (
-				<div className='flex mx-5 py-5' key={place._id}>
-					<div className='w-1/2'>
-						<h2 className='text-2xl text-blue-700 font-bold'>
-							{place.name}
-						</h2>
-						<p className='text-white mb-3'>
-							{place.description.slice(0, 280)}
-						</p>
-						<button
-							onClick={() => handleButton(place._id)}
-							className='bg-blue-600 px-3 rounded text-white hover:bg-red-800'
-						>
-							Book Now
-						</button>
-					</div>
-					<div className='w-1/2'>
-						<img src={place.img} alt='' className='w-96 h-64' />
+				<div
+					key={place._id}
+					className='transform hover:scale-110 motion-reduce:transform-none'
+				>
+					<div className='flex pl-3 bg-gray-800 text-white rounded-2xl'>
+						<div className='w-1/2'>
+							<h2 className='text-2xl text-blue-700 font-bold'>
+								{place.name}
+							</h2>
+							<p className='mb-3'>
+								{place.description.slice(0, 160)}
+							</p>
+							<button
+								onClick={() => handleButton(place._id)}
+								className='bg-red-600 px-3 rounded-2xl text-white hover:bg-red-800'
+							>
+								Book Now
+							</button>
+						</div>
+						<div className='w-1/2'>
+							<img
+								src={place.img}
+								alt=''
+								className='w-96  h-64 rounded-r-2xl'
+							/>
+						</div>
 					</div>
 				</div>
 			))}

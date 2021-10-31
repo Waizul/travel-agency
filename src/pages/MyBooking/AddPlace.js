@@ -9,14 +9,21 @@ const AddPlace = () => {
 	const {
 		register,
 		handleSubmit,
+		reset,
 		// formState: { errors },
 	} = useForm();
 
 	const onSubmit = (data) => {
 		data.email = user.email;
 		axios
-			.post('http://localhost:5000/places', data)
-			.then((data = console.log(data)));
+			.post(
+				'https://mysterious-fortress-00690.herokuapp.com/places',
+				data,
+			)
+			.then((data) => {
+				alert('new');
+				reset();
+			});
 	};
 
 	return (
