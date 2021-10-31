@@ -17,6 +17,22 @@ const ManageBookings = () => {
 			.then((data) => console.log(data));
 	};
 
+	const handleDelete = (id) => {
+		const proceed = window.confirm('it will delete');
+		if (proceed) {
+			const url = `https://mysterious-fortress-00690.herokuapp.com/bookingInfos/${id}`;
+			fetch(url, {
+				method: 'delete',
+			})
+				.then((res) => res.json())
+				.then((data) => {
+					if (data.deletedCount > 0) {
+						alert('deleted');
+					}
+				});
+		}
+	};
+
 	return (
 		<div className=''>
 			<table class='table-auto'>
@@ -45,7 +61,7 @@ const ManageBookings = () => {
 								Confirm
 							</button>
 							<button
-								onClick={() => handleConfirm(info._id)}
+								onClick={() => handleDelete(info._id)}
 								className=' text-white bg-red-800 px-3 rounded hover:bg-red-900'
 							>
 								Cancel
